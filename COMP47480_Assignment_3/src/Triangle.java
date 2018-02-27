@@ -21,7 +21,7 @@ public class Triangle {
 		}else{
 			result= "Invalid";
 		}
-return result;	
-}
+		return result;	
+	}
 
 }
