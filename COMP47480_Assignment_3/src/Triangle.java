@@ -6,9 +6,13 @@ public class Triangle {
 	}
 	public String typeof(int side_a,int side_b,int side_c) {
 		int total_a= side_a*side_b*side_c;
+		int tmax = Math.max(side_a, Math.max(side_c,side_b));
 		
 		String result= null;
-		if(total_a>0 ){
+		if((total_a<=0) || (side_a+side_b<=tmax )||(side_b+side_c<=tmax )||(side_a+side_c<=tmax  )){
+			result= "Invalid";
+		}
+		else{
 			if(side_a == side_b && side_b == side_c){
 				result= "Equilateral";
 			}
@@ -18,10 +22,9 @@ public class Triangle {
 			else {
 				result= "Scalene";
 			}
-		}else{
-			result= "Invalid";
 		}
-		return result;	
-	}
-
+		return result;
+		}
+	
+	
 }
