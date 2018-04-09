@@ -1,69 +1,75 @@
-/**
-/*
- * Created by Orla on 03/04/2018.
- *//*
-
 public class Demeter {
     static final String CURRENCY_SYMBOL = "€";
     public static void main(String[] args) {
         ShopKeeper john = new ShopKeeper();
-        Customer aoife = new Customer();
-        System.out.println("Initial value in wallet is: " + CURRENCY_SYMBOL + aoife.getTotalMoney());
+         Wallet wallet = new Wallet(95);
+        System.out.println("Initial value in wallet is: " + CURRENCY_SYMBOL + wallet.getTotalMoney());
+        Customer aoife = new Customer(wallet);
+        john.chargeCustomer(aoife,500);
 
-       // john.chargeCustomer(aoife, 50);
-      //  System.out.println("Value in wallet after purchase is: " + CURRENCY_SYMBOL + wallet.getTotalMoney());
+        System.out.println("Value in wallet after purchase is: " + CURRENCY_SYMBOL + aoife.getWallet().getTotalMoney());
     }
 }
 
 class Customer {
-    Wallet wallet ;
-    public Customer(){
-        name=""; //unused
+    public Customer(Wallet wallet) {
+        name = ""; //unused
         myWallet = wallet;
     }
-    public float updateWallet() {
-        myWallet.addMoney();
 
-        return value;
+    public boolean payandUpdate(float amount) {
+    Wallet wallet = getWallet();
+    boolean flag= true;
+    if(wallet.getTotalMoney()>amount) {
+        wallet.subtractMoney(amount);
+    } else {
+       flag=false;
     }
 
-    private float value;
+return flag;}
     public String getName() {
         return name;
     }
     public Wallet getWallet() {
         return myWallet;
     }
+
+    public void setMyWallet(Wallet myWallet) {
+        this.myWallet = myWallet;
+    }
+
     private String name;
     private Wallet myWallet;
 }
 
 class Wallet {
-    private float value;
     public  Wallet(float newValue) {
-
         value = newValue;
     }
-
+    public float getTotalMoney() {
+        return value;
+    }
     public void addMoney(float deposit) {
         value += deposit;
     }
     public void subtractMoney(float debit) {
         value -= debit;
     }
+    private float value;
 }
 
 class ShopKeeper {
-    // ...
-//    public void chargeCustomer(Customer cust, float amount){
-//        Wallet wallet = cust.getWallet();
-//        if (wallet.getTotalMoney() > amount) {
-//            wallet.subtractMoney(amount);
-//        } else {
-//            // get the baseball bat...
-//        }
+   //float amount; // ...
+    public void chargeCustomer( Customer cust, float amount){
+       System.out.println(" you owe "+ amount);
 
-   // }
-    // ...
-*/
-//}
+      boolean flag = cust.payandUpdate(amount);
+      if (flag== true){
+          System.out.println("Thank You,  Have a nice day");
+      }else{
+          System.out.println("Sorry come back back when your not broke");
+      }
+
+
+   }
+ }

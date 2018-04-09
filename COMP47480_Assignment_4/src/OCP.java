@@ -9,13 +9,13 @@ public class OCP {
     }
 }
 class PostageStamp{
-    public PostageStamp(Square square){
+    public PostageStamp(Shape square){
         shape = square;
     }
     public String toString(){
         return "stamp, contained in a " + shape.toString();
     }
-    Square shape;
+    Shape shape;
 }
 
 
