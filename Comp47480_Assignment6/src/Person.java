@@ -1,4 +1,5 @@
 
+
 public class Person implements Observer{
   AlarmClock alarmClock;
   String alarmtime;

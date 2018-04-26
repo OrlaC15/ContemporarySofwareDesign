@@ -23,9 +23,7 @@ for (int i =0; i<o.size();i++){
         o.remove(observer);
     }
 
-//    public Object getUpdate(){
-//
-//    }
+
 
 
 
